@@ -21,7 +21,7 @@ func main() {
 		}
 		reset = true
 		for _, field := range row {
-			n, _ := strconv.Atoi(string(field))
+			n, _ := strconv.Atoi(field)
 			if n < low || reset {
 				low = n
 			}
