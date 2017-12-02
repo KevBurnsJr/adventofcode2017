@@ -12,22 +12,23 @@ func main() {
 	inputReader.Comma = '	'
 	var high int
 	var low int
+	var reset bool
 	var sum = 0
 	for {
 		row, err := inputReader.Read()
 		if err != nil {
 			break
 		}
-		high = 0
-		low = 0
+		reset = true
 		for _, field := range row {
 			n, _ := strconv.Atoi(string(field))
-			if n < low || low == 0 {
+			if n < low || reset {
 				low = n
 			}
-			if n > high || high == 0 {
+			if n > high || reset {
 				high = n
 			}
+			reset = false
 		}
 		sum += high - low
 	}
