@@ -5,13 +5,13 @@ import (
 	"math"
 )
 /*
-   -y|
-     |
--x   |
------|-----
-     |   +x
-     |
      |+y
+     |
+-x   |   +x
+-----|-----
+     |
+     |
+     |-y
 */
 
 func main() {
@@ -28,9 +28,9 @@ func main() {
 			continue
 		}
 		var (
-			top    = y == -1 * radius
+			top    = y == radius
 			left   = x == -1 * radius
-			bottom = y == radius
+			bottom = y == -1 * radius
 			right  = x == radius
 		)
 		if top && !left {
@@ -38,7 +38,7 @@ func main() {
 			continue
 		}
 		if left && !bottom {
-			y++
+			y--
 			continue
 		}
 		if bottom && !right {
@@ -46,7 +46,7 @@ func main() {
 			continue
 		}
 		if right && !top {
-			y--
+			y++
 			continue
 		}
 	}
